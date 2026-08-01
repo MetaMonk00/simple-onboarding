@@ -228,6 +228,15 @@
           <div class="field"><label>Time zone</label>
             <select name="Time_Zone"><option value="">Select...</option><option>Eastern (ET)</option><option>Central (CT)</option><option>Mountain (MT)</option><option>Pacific (PT)</option><option>Alaska (AKT)</option><option>Hawaii (HT)</option></select>
           </div>
+          <div class="divider"><span>About the business</span></div>
+          <div class="row2">
+            <div class="field"><label>Industry / trade</label><input name="Industry_Trade" placeholder="e.g. glass repair, roofing, pool service" /></div>
+            <div class="field"><label>Main service keyword (what customers search)</label><input name="Main_Keyword" placeholder="e.g. sliding glass door repair" /></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Year founded / years of experience</label><input name="Years_Experience" placeholder="e.g. Founded 2007 — 23+ years experience" /></div>
+            <div class="field"><label>Tagline (one short sentence)</label><input name="Tagline" placeholder="e.g. Fast, honest repairs — done right the first time" /></div>
+          </div>
           <div class="divider"><span>Owner</span></div>
           <div class="row2">
             <div class="field"><label>Owner full name <span style="color:#FF5200;">*</span></label><input name="Owner_Name" id="d_f_oname" placeholder="Jane Smith" /></div>
@@ -245,6 +254,9 @@
             </div>
           </div>
           <div class="btn-row"><button class="btn-back" onclick="dgo(0)">← Back</button><button class="btn-primary" onclick="dvalidateStep1()">Continue →</button></div>
+        </div>
+
+        <!-- DS2: Online Presence -->
         <div id="ds2" class="screen hidden">
           <div class="eyebrow">Step 3 · Online Presence</div>
           <h1>Your online footprint.</h1>
@@ -256,15 +268,22 @@
             <div class="field"><label>Instagram handle</label><input name="Instagram_Handle" placeholder="@yourbiz" /></div>
           </div>
           <div class="field"><label>Google Business Profile name (exactly as it appears)</label><input name="Google_Business_Profile" placeholder="Acme Services — Fort Walton Beach" /></div>
-          <div class="field"><label>Current average Google rating</label>
-            <select name="Google_Rating"><option value="">Select...</option><option>5.0</option><option>4.5–4.9</option><option>4.0–4.4</option><option>3.5–3.9</option><option>Below 3.5</option><option>No Google profile yet</option></select>
+          <div class="row2">
+            <div class="field"><label>Current average Google rating</label>
+              <select name="Google_Rating"><option value="">Select...</option><option>5.0</option><option>4.5–4.9</option><option>4.0–4.4</option><option>3.5–3.9</option><option>Below 3.5</option><option>No Google profile yet</option></select>
+            </div>
+            <div class="field"><label>How many Google reviews?</label><input name="Google_Review_Count" placeholder="e.g. 87" /></div>
           </div>
+          <div class="field"><label>Google "write a review" link (Google Business Profile → Ask for reviews)</label><input name="Google_Review_Link" placeholder="g.page/r/XXXX/review — leave blank if unsure" /></div>
+          <div class="field"><label>Google Maps listing URL (Maps → your business → Share → Copy link)</label><input name="Google_Maps_URL" placeholder="maps.app.goo.gl/... — leave blank if unsure" /></div>
+          <div class="field"><label>Preferred domain for your new site</label><input name="Preferred_Domain" placeholder="e.g. yourbusiness.com — existing or one you'd like us to get" /></div>
           <div class="divider"><span>Branding</span></div>
           <div class="row2">
             <div class="field"><label>Primary brand color</label><input name="Brand_Color" placeholder="#FF8C00 or 'deep navy'" /></div>
-            <div class="field"><label>Do you have a logo?</label>
-              <select name="Has_Logo"><option value="">Select...</option><option>Yes — I'll send it over</option><option>No — need one made</option></select>
-            </div>
+            <div class="field"><label>Accent / secondary color (optional)</label><input name="Accent_Color" placeholder="e.g. gold, #FFB703 — or 'you pick'" /></div>
+          </div>
+          <div class="field"><label>Do you have a logo?</label>
+            <select name="Has_Logo"><option value="">Select...</option><option>Yes — I'll send it over</option><option>No — need one made</option></select>
           </div>
           <div class="field"><label>Short business description (2–3 sentences)</label><textarea name="Business_Description" rows="2" placeholder="What you do, who you serve, what makes you different..."></textarea></div>
           <div class="btn-row"><button class="btn-back" onclick="dgo(1)">← Back</button><button class="btn-primary" onclick="dgo(3)">Continue →</button></div>
@@ -284,6 +303,21 @@
             <div class="field"><label>Who is your target customer?</label><textarea name="Target_Customer" rows="3" placeholder="e.g. Homeowners in Destin, 30–55..."></textarea></div>
           </div>
           <div class="field"><label>Testimonials to feature (leave blank to pull from Google)</label><textarea name="Testimonials" rows="2" placeholder="Paste any reviews you want highlighted..."></textarea></div>
+          <div class="divider"><span>Your website content</span></div>
+          <div class="field"><label>Top 4 services to feature on the website</label><textarea name="Top_4_Services" rows="2" placeholder="Your 4 most profitable services, most important first — each gets its own page"></textarea></div>
+          <div class="field"><label>Service areas — up to 10 cities, most important first</label><textarea name="Service_Areas" rows="2" placeholder="e.g. Destin, Fort Walton Beach, Niceville, Navarre... — each gets its own SEO page"></textarea></div>
+          <div class="field"><label>Local knowledge (helps these pages rank)</label><textarea name="Service_Area_Notes" rows="2" placeholder="Neighborhoods you work in most, landmarks, common jobs in each area..."></textarea></div>
+          <div class="row2">
+            <div class="field"><label>What sets you apart from competitors?</label><textarea name="Differentiator" rows="3" placeholder="In your own words — this goes on your About page"></textarea></div>
+            <div class="field"><label>Warranty or guarantee?</label><textarea name="Warranty" rows="3" placeholder="e.g. 1-year workmanship warranty on all repairs"></textarea></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Emergency / same-day service?</label>
+              <select name="Emergency_Service"><option value="">Select...</option><option>Yes — 24/7</option><option>Yes — same-day when possible</option><option>No</option></select>
+            </div>
+            <div class="field"><label>Payment methods accepted</label><input name="Payment_Methods" placeholder="e.g. cash, card, check, financing" /></div>
+          </div>
+          <div class="field"><label>Questions customers always ask you (optional — each becomes a blog post)</label><textarea name="Blog_Topics" rows="2" placeholder="e.g. How much does a sliding door repair cost? Can a foggy window be fixed?"></textarea></div>
           <div class="divider"><span>Photos</span></div>
           <div class="field"><label>Upload photos of your work, team, or location</label></div>
           <div class="upload-zone" onclick="document.getElementById('d_photos').click()">
@@ -382,6 +416,11 @@
       <div class="mob-field"><label>Business phone <span style="color:#FF5200;">*</span></label><input name="m_Business_Phone" id="m_f_bphone" type="tel" placeholder="(850) 555-0100" /></div>
       <div class="mob-field"><label>Business email <span style="color:#FF5200;">*</span></label><input name="m_Business_Email" id="m_f_bemail" type="email" placeholder="hello@yourbiz.com" /></div>
       <div class="mob-field"><label>Time zone</label><select name="m_Time_Zone"><option value="">Select...</option><option>Eastern (ET)</option><option>Central (CT)</option><option>Mountain (MT)</option><option>Pacific (PT)</option><option>Alaska (AKT)</option><option>Hawaii (HT)</option></select></div>
+      <div class="mob-divider"><span>About the business</span></div>
+      <div class="mob-field"><label>Industry / trade</label><input name="m_Industry_Trade" placeholder="e.g. glass repair, roofing, pool service" /></div>
+      <div class="mob-field"><label>Main service keyword (what customers search)</label><input name="m_Main_Keyword" placeholder="e.g. sliding glass door repair" /></div>
+      <div class="mob-field"><label>Year founded / years of experience</label><input name="m_Years_Experience" placeholder="e.g. Founded 2007 — 23+ years" /></div>
+      <div class="mob-field"><label>Tagline (one short sentence)</label><input name="m_Tagline" placeholder="e.g. Fast, honest repairs — done right the first time" /></div>
       <div class="mob-divider"><span>Owner</span></div>
       <div class="mob-field"><label>Owner full name <span style="color:#FF5200;">*</span></label><input name="m_Owner_Name" id="m_f_oname" placeholder="Jane Smith" /></div>
       <div class="mob-field"><label>Owner cell <span style="color:#FF5200;">*</span></label><input name="m_Owner_Cell" id="m_f_ocell" type="tel" placeholder="(850) 555-0199" /></div>
@@ -402,8 +441,13 @@
       <div class="mob-field"><label>Instagram handle</label><input name="m_Instagram_Handle" placeholder="@yourbiz" /></div>
       <div class="mob-field"><label>Google Business Profile name</label><input name="m_Google_Business_Profile" placeholder="Acme Services — Fort Walton Beach" /></div>
       <div class="mob-field"><label>Current average Google rating</label><select name="m_Google_Rating"><option value="">Select...</option><option>5.0</option><option>4.5–4.9</option><option>4.0–4.4</option><option>3.5–3.9</option><option>Below 3.5</option><option>No Google profile yet</option></select></div>
+      <div class="mob-field"><label>How many Google reviews?</label><input name="m_Google_Review_Count" placeholder="e.g. 87" /></div>
+      <div class="mob-field"><label>Google "write a review" link</label><input name="m_Google_Review_Link" placeholder="g.page/r/XXXX/review — blank if unsure" /></div>
+      <div class="mob-field"><label>Google Maps listing URL</label><input name="m_Google_Maps_URL" placeholder="maps.app.goo.gl/... — blank if unsure" /></div>
+      <div class="mob-field"><label>Preferred domain for your new site</label><input name="m_Preferred_Domain" placeholder="e.g. yourbusiness.com" /></div>
       <div class="mob-divider"><span>Branding</span></div>
       <div class="mob-field"><label>Primary brand color</label><input name="m_Brand_Color" placeholder="#FF8C00 or 'deep navy'" /></div>
+      <div class="mob-field"><label>Accent / secondary color (optional)</label><input name="m_Accent_Color" placeholder="e.g. gold, #FFB703 — or 'you pick'" /></div>
       <div class="mob-field"><label>Do you have a logo?</label><select name="m_Has_Logo"><option value="">Select...</option><option>Yes — I'll send it over</option><option>No — need one made</option></select></div>
       <div class="mob-field"><label>Short business description</label><textarea name="m_Business_Description" rows="3" placeholder="What you do, who you serve, what makes you different..."></textarea></div>
     </div>
@@ -417,6 +461,15 @@
       <div class="mob-field"><label>How do you currently take bookings?</label><select name="m_Current_Booking_Method"><option value="">Select...</option><option>Phone only</option><option>Walk-ins only</option><option>Online booking (other software)</option><option>Mix of the above</option><option>No system yet</option></select></div>
       <div class="mob-field"><label>Who is your target customer?</label><textarea name="m_Target_Customer" rows="3" placeholder="e.g. Homeowners in Destin, 30–55, looking for reliable weekly service..."></textarea></div>
       <div class="mob-field"><label>Testimonials to feature (leave blank to pull from Google)</label><textarea name="m_Testimonials" rows="3" placeholder="Paste any reviews you want highlighted..."></textarea></div>
+      <div class="mob-divider"><span>Your website content</span></div>
+      <div class="mob-field"><label>Top 4 services to feature on the website</label><textarea name="m_Top_4_Services" rows="3" placeholder="Your 4 most profitable services, most important first — each gets its own page"></textarea></div>
+      <div class="mob-field"><label>Service areas — up to 10 cities, most important first</label><textarea name="m_Service_Areas" rows="3" placeholder="e.g. Destin, Fort Walton Beach, Niceville... — each gets its own SEO page"></textarea></div>
+      <div class="mob-field"><label>Local knowledge (helps these pages rank)</label><textarea name="m_Service_Area_Notes" rows="3" placeholder="Neighborhoods you work in most, landmarks, common jobs in each area..."></textarea></div>
+      <div class="mob-field"><label>What sets you apart from competitors?</label><textarea name="m_Differentiator" rows="3" placeholder="In your own words — this goes on your About page"></textarea></div>
+      <div class="mob-field"><label>Warranty or guarantee?</label><textarea name="m_Warranty" rows="2" placeholder="e.g. 1-year workmanship warranty on all repairs"></textarea></div>
+      <div class="mob-field"><label>Emergency / same-day service?</label><select name="m_Emergency_Service"><option value="">Select...</option><option>Yes — 24/7</option><option>Yes — same-day when possible</option><option>No</option></select></div>
+      <div class="mob-field"><label>Payment methods accepted</label><input name="m_Payment_Methods" placeholder="e.g. cash, card, check, financing" /></div>
+      <div class="mob-field"><label>Questions customers always ask you (optional — each becomes a blog post)</label><textarea name="m_Blog_Topics" rows="3" placeholder="e.g. How much does a sliding door repair cost?"></textarea></div>
       <div class="mob-divider"><span>Photos</span></div>
       <div class="mob-upload-zone" onclick="document.getElementById('m_photos').click()">
         <input type="file" id="m_photos" name="m_Photos" multiple accept="image/*" onchange="previewPhotos(this,'m_preview','m_count','mob')" />
