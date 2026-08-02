@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Color Picker — Service Site Template</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  body { background: var(--bg-soft); padding: 40px 20px; }
+  .picker-wrap { max-width: 980px; margin: 0 auto; }
+  .picker-panel { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: var(--shadow-md); margin-bottom: 32px; }
+  .picker-row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-end; }
+  .picker-field label { display: block; font-weight: 700; font-size: .85rem; margin-bottom: 8px; }
+  .picker-field input[type="color"] { width: 90px; height: 48px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; background: #fff; padding: 4px; }
+  .picker-field .hex { font-size: .8rem; color: var(--ink-soft); margin-top: 6px; font-family: monospace; }
+  .preview-block { margin-top: 28px; display: grid; gap: 20px; }
+  .swatch-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  pre { background: var(--ink); color: #d8e2f0; padding: 22px; border-radius: 16px; font-size: .85rem; overflow: auto; }
+  .copy-btn { margin-top: 12px; }
+  .demo-pill { border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px; display: flex; gap: 14px; align-items: center; box-shadow: var(--shadow-sm); background: #fff; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="picker-wrap">
+  <div class="picker-panel">
+    <h1 style="font-size:1.6rem;margin-bottom:6px">Theme Color Picker</h1>
+    <p style="margin-bottom:24px">Pick your brand colors, preview the components live, then copy the CSS block into the top of <code>css/styles.css</code> (replace the matching lines in <code>:root</code>).</p>
+    <div class="picker-row">
+      <div class="picker-field">
+        <label for="cPrimary">Primary color</label>
+        <input type="color" id="cPrimary" value="#1d6ef5">
+        <div class="hex" id="hPrimary">#1d6ef5</div>
+      </div>
+      <div class="picker-field">
+        <label for="cAccent">Accent (Call Now / stars)</label>
+        <input type="color" id="cAccent" value="#ffb703">
+        <div class="hex" id="hAccent">#ffb703</div>
+      </div>
+      <div class="picker-field">
+        <label for="cInk">Text / footer color</label>
+        <input type="color" id="cInk" value="#0f1b2d">
+        <div class="hex" id="hInk">#0f1b2d</div>
+      </div>
+    </div>
+    <p style="font-size:.82rem;margin-top:14px;color:var(--ink-soft)">Dark and light shades of the primary color are generated automatically.</p>
+
+    <div class="preview-block">
+      <div class="demo-pill">
+        <strong>Live preview:</strong>
+        <a class="btn btn-primary" href="#" onclick="return false">Get Free Quote</a>
+        <a class="btn btn-outline" href="#" onclick="return false">Learn More</a>
+        <a class="btn btn-call" href="#" onclick="return false">Call Now</a>
+        <span class="eyebrow" style="margin:0">Section Label</span>
+      </div>
+      <div class="card" style="max-width:340px">
+        <h3>Sample Card</h3>
+        <p>This is how service cards will look with your colors.</p>
+        <a class="card-link" href="#" onclick="return false">Learn more</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="picker-panel">
+    <h2 style="font-size:1.2rem;margin-bottom:12px">Your CSS — paste into <code>:root</code> in styles.css</h2>
+    <pre id="cssOut"></pre>
+    <button class="btn btn-primary copy-btn" id="copyBtn">Copy CSS</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  function hexToRgb(h) {
+    var n = parseInt(h.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function rgbToHex(r, g, b) {
+    return "#" + [r, g, b].map(function (v) {
+      v = Math.max(0, Math.min(255, Math.round(v)));
+      return v.toString(16).padStart(2, "0");
+    }).join("");
+  }
+  function shade(hex, pct) { // pct<0 darken, pct>0 lighten toward white
+    var c = hexToRgb(hex);
+    return rgbToHex(
+      c[0] + (pct > 0 ? (255 - c[0]) * pct : c[0] * pct),
+      c[1] + (pct > 0 ? (255 - c[1]) * pct : c[1] * pct),
+      c[2] + (pct > 0 ? (255 - c[2]) * pct : c[2] * pct)
+    );
+  }
+  var root = document.documentElement;
+  function update() {
+    var p = document.getElementById("cPrimary").value;
+    var a = document.getElementById("cAccent").value;
+    var ink = document.getElementById("cInk").value;
+    var pd = shade(p, -0.3), pl = shade(p, 0.92);
+    root.style.setProperty("--primary", p);
+    root.style.setProperty("--primary-dark", pd);
+    root.style.setProperty("--primary-light", pl);
+    root.style.setProperty("--accent", a);
+    root.style.setProperty("--ink", ink);
+    document.getElementById("hPrimary").textContent = p;
+    document.getElementById("hAccent").textContent = a;
+    document.getElementById("hInk").textContent = ink;
+    document.getElementById("cssOut").textContent =
+      "  --primary: " + p + ";\n" +
+      "  --primary-dark: " + pd + ";\n" +
+      "  --primary-light: " + pl + ";\n" +
+      "  --accent: " + a + ";\n" +
+      "  --ink: " + ink + ";";
+  }
+  ["cPrimary", "cAccent", "cInk"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", update);
+  });
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    navigator.clipboard.writeText(document.getElementById("cssOut").textContent).then(function () {
+      var b = document.getElementById("copyBtn");
+      b.textContent = "Copied";
+      setTimeout(function () { b.textContent = "Copy CSS"; }, 1500);
+    });
+  });
+  update();
+})();
+</script>
+</body>
+</html>

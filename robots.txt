@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_theme-picker.html
+
+Sitemap: https://powerhouse-solutions.net/sitemap.xml
